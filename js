@@ -9,6 +9,10 @@ function resizeCanvas() {
 resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
 
+const startScreen = document.getElementById('startScreen');
+const endScreen = document.getElementById('endScreen');
+const startButton = document.getElementById('startButton');
+const restartButton = document.getElementById('restartButton');
 
 let score = 0;
 let lives = 3;
@@ -118,6 +122,18 @@ function gameLoop() {
 function gameOver() {
     isGameOver = true;
     document.getElementById('gameOver').style.display = 'block';
+}
+function startGame() {
+    isGameOver = false;
+    score = 0;
+    lives = 3;
+    gameObjects.length = 0;
+    startScreen.style.display = 'none';
+    endScreen.style.display = 'none';
+    canvas.style.display = 'block';
+    clearInterval(gameInterval);
+    gameInterval = setInterval(gameObject, spawnRate);
+    requestAnimationFrame(gameProcess);
 }
 
 // Start the game
