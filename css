@@ -21,4 +21,19 @@ body {
     font-weight: bold;
     z-index: 10;
 }
+#lives {
+    right: 10px;
+    left: auto;
+}
 
+#gameOver {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 48px;
+    font-weight: bold;
+    display: none;
+    color: red;
+    z-index: 20;
+}
