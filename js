@@ -7,7 +7,7 @@ let score = 0;
 let lives = 3;
 let isGameOver = false;
 const gameObjects = [];
-const spawnRate = 1000; // milliseconds
+const spawnRate = 1000; 
 
 class GameObject {
     constructor(x, y, radius, type) {
