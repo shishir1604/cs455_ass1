@@ -1,7 +1,14 @@
-const canvas = document.getElementById('gameCanvas');
+const canvas = document.querySelector('#gameCanvas');
 const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
 
 let score = 0;
 let lives = 3;
