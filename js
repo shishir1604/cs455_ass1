@@ -3,6 +3,9 @@ const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
+let score = 0;
+let lives = 3;
+let isGameOver = false;
 const gameObjects = [];
 const spawnRate = 1000; // milliseconds
 
@@ -39,6 +42,7 @@ function spawnGameObject() {
     const type = Math.random() > 0.9 ? 'bomb' : 'fruit';
     gameObjects.push(new GameObject(x, y, radius, type));
 }
+
 canvas.addEventListener('mousemove', function(event) {
     if (isGameOver) return;
 
@@ -59,6 +63,40 @@ canvas.addEventListener('mousemove', function(event) {
         }
     }
 });
-function gameLoop()
-function gameOver()
+
+function gameLoop() {
+    if (isGameOver) return;
+    
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (let i = 0; i < gameObjects.length; i++) {
+        const obj = gameObjects[i];
+        obj.update();
+        obj.draw();
+
+        if (obj.y > canvas.height) {
+            if (obj.type === 'fruit') {
+                lives--;
+                if (lives === 0) {
+                    gameOver();
+                }
+            }
+            gameObjects.splice(i, 1);
+            i--;
+        }
+    }
+
+    document.getElementById('score').textContent = `Score: ${score}`;
+    document.getElementById('lives').textContent = `Lives: ${lives}`;
+
+    requestAnimationFrame(gameLoop);
+}
+
+function gameOver() {
+    isGameOver = true;
+    document.getElementById('gameOver').style.display = 'block';
+}
+
+// Start the game
 setInterval(spawnGameObject, spawnRate);
+requestAnimationFrame(gameLoop);
