@@ -9,16 +9,19 @@ function resizeCanvas() {
 resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
 
-const startScreen = document.getElementById('startScreen');
-const endScreen = document.getElementById('endScreen');
-const startButton = document.getElementById('startButton');
-const restartButton = document.getElementById('restartButton');
 
 let score = 0;
 let lives = 3;
 let isGameOver = false;
 const gameObjects = [];
-const spawnRate = 1000; 
+let spawnRate = 1000;
+let gameInterval;
+
+const startScreen = document.getElementById('startScreen');
+const endScreen = document.getElementById('endScreen');
+const startButton = document.getElementById('startButton');
+const restartButton = document.getElementById('restartButton');
+
 
 const fruitImages = [
     'images/apple1-removebg-preview.png',
@@ -45,6 +48,11 @@ class GameObject {
         this.velocityX = Math.random() * 4 - 2;
         this.velocityY = Math.random() * 4 - 10;
         this.gravity = 0.1;
+        if (type === 'fruit') {
+            this.image = fruitImages[Math.floor(Math.random() * fruitImages.length)];
+        } else {
+            this.image = bombImage;
+        }
     }
 
     update() {
@@ -54,20 +62,20 @@ class GameObject {
     }
 
     draw() {
-        ctx.fillStyle = this.type === 'fruit' ? 'green' : 'red';
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fill();
+        ctx.drawImage(this.image, this.x - this.radius, this.y - this.radius, this.radius * 2.5, this.radius * 2.5);
     }
 }
 
-function spawnGameObject() {
-    if (isGameOver) return;
-    const x = Math.random() * canvas.width;
+function gameObject() {
+    if (isGameOver){
+        return;
+    }
+    const radius = 60;
+    const x = Math.random() * (canvas.width - 2 * radius) + radius;
     const y = canvas.height;
-    const radius = 30;
     const type = Math.random() > 0.9 ? 'bomb' : 'fruit';
     gameObjects.push(new GameObject(x, y, radius, type));
+
 }
 
 canvas.addEventListener('mousemove', function(event) {
@@ -82,8 +90,9 @@ canvas.addEventListener('mousemove', function(event) {
         if (distance < obj.radius) {
             if (obj.type === 'fruit') {
                 score++;
-            } else if (obj.type === 'bomb') {
-                gameOver();
+            }
+            else if (obj.type === 'bomb') {
+                endGame();
             }
             gameObjects.splice(i, 1);
             break;
@@ -91,9 +100,9 @@ canvas.addEventListener('mousemove', function(event) {
     }
 });
 
-function gameLoop() {
+function gameProcess() {
     if (isGameOver) return;
-    
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     for (let i = 0; i < gameObjects.length; i++) {
@@ -105,7 +114,7 @@ function gameLoop() {
             if (obj.type === 'fruit') {
                 lives--;
                 if (lives === 0) {
-                    gameOver();
+                    endGame();
                 }
             }
             gameObjects.splice(i, 1);
@@ -116,13 +125,16 @@ function gameLoop() {
     document.getElementById('score').textContent = `Score: ${score}`;
     document.getElementById('lives').textContent = `Lives: ${lives}`;
 
-    requestAnimationFrame(gameLoop);
+    requestAnimationFrame(gameProcess);
 }
 
-function gameOver() {
+function endGame() {
     isGameOver = true;
-    document.getElementById('gameOver').style.display = 'block';
+    document.getElementById('finalScore').textContent = `Final Score: ${score}`;
+    endScreen.style.display = 'block';
+    clearInterval(gameInterval);
 }
+
 function startGame() {
     isGameOver = false;
     score = 0;
@@ -136,6 +148,8 @@ function startGame() {
     requestAnimationFrame(gameProcess);
 }
 
-// Start the game
-setInterval(spawnGameObject, spawnRate);
-requestAnimationFrame(gameLoop);
+startButton.addEventListener('click', startGame);
+restartButton.addEventListener('click', startGame);
+
+startScreen.style.display = 'block';
+canvas.style.display = 'none';
