@@ -16,6 +16,22 @@ let isGameOver = false;
 const gameObjects = [];
 const spawnRate = 1000; 
 
+const fruitImages = [
+    'images/apple1-removebg-preview.png',
+    'images/banana1.png',
+    'images/orange1-removebg-preview.png',
+    'images/cherries1.png',
+    'images/watermelon1.png',
+
+].map(src => {
+    const img = new Image();
+    img.src = src;
+    return img;
+});
+
+const bombImage = new Image();
+bombImage.src = 'images/bomb1-removebg-preview.png';
+
 class GameObject {
     constructor(x, y, radius, type) {
         this.x = x;
