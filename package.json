@@ -2,6 +2,8 @@
   "type": "module",
   "scripts": {
     "test": "jest --coverage",
+    "lint:css": "stylelint 'css/**/*.css'",
+    "check-duplicates": "jscpd ./js --min-tokens 50 --reporters console,html --output ./reports"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.25.4",
@@ -247,6 +249,17 @@
     "yargs": "^17.7.2",
     "yargs-parser": "^21.1.1",
     "yocto-queue": "^0.1.0"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "coverageThreshold": {
+      "global": {
+        "branches": 0,
+        "functions": 0,
+        "lines": 30,
+        "statements": 30
+      }
+    }
   },
   "keywords": [],
   "author": "",
