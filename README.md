@@ -1,4 +1,4 @@
-# cs455_ass1
+# cs455 : Introduction to Software Engineering
 
 ## Assignment 1: Develop a game
 
