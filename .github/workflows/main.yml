@@ -1,47 +1,38 @@
-name: CI/CD Pipeline
+name: Code Quality Checks
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
+      - name: Setup Node.js latest version
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '20'
 
       - name: Install dependencies
         run: npm install
 
-      - name: Run linter
+      - name: Run ESLint
         run: npm run lint
 
-      - name: Run tests
-        run: npm test
+      - name: Run Stylelint
+        run: npm run lint:css
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Run HTMLHint
+        run: npm run lint
 
-      - name: Build project
-        run: npm run build
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          publish_dir: ./index.html
-          github_token: ${{ secrets.GITHUB_TOKEN }}  
+      - name: Run JSCPD
+        run: npm run check:duplicates
+        
+      - name: Jest unit testing
+        run: npm run test
