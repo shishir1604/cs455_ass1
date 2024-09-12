@@ -13,6 +13,4 @@ Do enjoy!
 
 Link- https://shishir1604.github.io/cs455_ass1/
 
-# Assignment_2
-
-## Code Quality and Testing
+# Assignment_2 : Code Quality and Testing
