@@ -12,3 +12,7 @@ game over screen appears with final score and restart button to play again.
 Do enjoy!
 
 Link- https://shishir1604.github.io/cs455_ass1/
+
+#Assignment_2
+
+##Code Quality and Testing
