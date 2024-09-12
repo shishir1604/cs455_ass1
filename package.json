@@ -1,7 +1,7 @@
 {
   "type": "module",
   "scripts": {
-    "lint": "eslint",
+    "lint": "eslint js",
     "test": "jest --coverage",
     "lint:css": "stylelint 'css/**/*.css'",
     "check-duplicates": "jscpd ./js --min-tokens 50 --reporters console,html --output ./reports"
