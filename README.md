@@ -68,31 +68,24 @@ Link- https://shishir1604.github.io/cs455_ass1/
 1. **game.test.js**
    - **Test: should add event listeners to start and restart buttons**
      - **Description:** Verifies that event listeners for `click` are added to both the `startButton` and `restartButton`.
-
 2. **resizeCanvas.test.js**
    - **Test: should adjust canvas size when window resizes**
      - **Description:** Checks if the canvas size is updated correctly when the window is resized.
-
 3. **updateScore.test.js**
    - **Test: should update the score correctly**
      - **Description:** Ensures that the score is updated accurately based on game events or actions.
-
 4. **liveDecreases.test.js**
    - **Test: should decrease lives when fruits are missed**
      - **Description:** Validates that the number of lives decreases appropriately when fruits are missed in the game.
-
 5. **gameOver.test.js**
    - **Test: should trigger game over state when lives reach zero**
      - **Description:** Confirms that the game over state is activated when the player’s lives drop to zero.
-
 6. **buttonEvents.test.js**
    - **Test: should trigger game start on clicking start and restart buttons**
      - **Description:** Ensures that clicking the `startButton` and `restartButton` triggers the appropriate event handlers and sets `isGameOver` to `false`.
-
 7. **drawImage.test.js**
    - **Test: should draw images on canvas correctly**
      - **Description:** Ensures that images are drawn accurately on the canvas based on game logic.
-
 8. **clearCanvas.test.js**
    - **Test: should clear canvas before redrawing**
      - **Description:** Verifies that the canvas is cleared before new drawings are rendered to avoid visual artifacts.
