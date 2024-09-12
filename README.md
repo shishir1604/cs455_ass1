@@ -1,4 +1,7 @@
 # cs455_ass1
+
+## Assignment 1: Develop a game
+
 This is a game based on the popular fruit ninja game. There are several features that constitutes the final game. The main featrues of the game include spawning of the fruits. The fruits get sliced on the hover of cursor. 
 Main features -
 1) fruit spawn.
@@ -13,4 +16,4 @@ Do enjoy!
 
 Link- https://shishir1604.github.io/cs455_ass1/
 
-# Assignment_2 : Code Quality and Testing
+## Assignment_2 : Code Quality and Testing
