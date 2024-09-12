@@ -24,6 +24,7 @@ Link- https://shishir1604.github.io/cs455_ass1/
   - Refactor the code to reduce the errors.
   - Explore testing to implement unit test.
   - implement some unit test to cover methods of game.js
+
 -**Shishir**-
   - Explore code quality metrics tools
   - Implement lint for Css.
