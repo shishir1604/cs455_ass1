@@ -1,0 +1,12 @@
+{
+    "extends": "stylelint-config-standard",
+    "rules": {
+      "color-no-invalid-hex": true,
+      "property-no-vendor-prefix": null,
+      "selector-max-id": 1,
+      "unit-no-unknown": true,
+      "color-function-notation":null,
+      "selector-id-pattern":null,
+      "block-no-empty": true
+  }
+}
