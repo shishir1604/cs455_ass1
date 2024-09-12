@@ -17,7 +17,18 @@ Do enjoy!
 Link- https://shishir1604.github.io/cs455_ass1/
 
 ## Assignment_2 : Code Quality and Testing
-## Task Distribution-
+## Task Distribution
+- **Ayush Yadav**-
+  - Explore Lint and code quality metrics
+  - Implement ESlint
+  - Refactor the code to reduce the errors.
+  - Explore testing to implement unit test.
+  - implement some unit test to cover methods of game.js
+-**Shishir**-
+  - Explore code quality metrics tools
+  - Implement lint for Css.
+  - Refactoring the code
+  - did unit testing of other parts of game.js using jest framework.
 
 ### Tools Used
 
