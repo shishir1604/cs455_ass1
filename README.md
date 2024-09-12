@@ -19,7 +19,7 @@ Link- https://shishir1604.github.io/cs455_ass1/
 ## Assignment_2 : Code Quality and Testing
 ## Task Distribution
 - **Ayush Yadav** -
-  - Explore Lint and code quality metrics
+  - Explore Lint and code quality metrics & duplication.
   - Implement ESlint
   - Refactor the code to reduce the errors.
   - Explore testing to implement unit test.
