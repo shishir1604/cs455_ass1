@@ -1,5 +1,5 @@
 # CS455 : Introduction to Software Engineering
-
+Refer github acions main.yml for code quality metrics and test coverage.
 ## Assignment 1: Develop a game
 
 This is a game based on the popular fruit ninja game. There are several features that constitutes the final game. The main featrues of the game include spawning of the fruits. The fruits get sliced on the hover of cursor. 
