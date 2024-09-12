@@ -20,7 +20,12 @@ Link- https://shishir1604.github.io/cs455_ass1/
 
 ### Tools Used
 
-- **ESLint**: A tool for checking JavaScript code quality and consistency. It also supports HTML files using the `eslint-plugin-html` plugin.
-- **StyleLint**: A tool for maintaining quality and consistency in CSS files.
-- **jscpd**: A tool for detecting code duplication across the project.
-- **Jest**: A JavaScript testing framework for unit testing.
+
+- **ESLint**: A tool for checking JavaScript and HTML code quality using the `eslint-plugin-html` plugin.
+  
+- **StyleLint**: Ensures consistency and quality in CSS code across the project.
+
+- **jscpd**: Detects and prevents duplicate code to maintain clean code structure.
+
+- **Jest**: A testing framework for running unit tests to ensure code correctness.
+
