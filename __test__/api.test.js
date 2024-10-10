@@ -52,5 +52,6 @@ describe('POST /addScore', ()=>{
         });
         expect(add.statusCode).toBe(200);
         expect(add.text).toBe('score saved');
+        
     });
 });
