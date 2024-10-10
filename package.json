@@ -1,6 +1,7 @@
 {
   "type": "module",
   "scripts": {
+    "start": "node server.cjs",
     "lint": "eslint js",
     "test": "jest --coverage",
     "test:detectOpenHandles": "jest --detectOpenHandles",
