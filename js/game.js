@@ -15,7 +15,7 @@ let isGameOver = false;
 const gameObjects = [];
 let spawnRate = 1000;
 let gameInterval;
-
+let playerName;
 const startScreen = document.querySelector('#startScreen');
 const endScreen = document.querySelector('#endScreen');
 const startButton = document.querySelector('#startButton');
@@ -65,39 +65,42 @@ class GameObject {
 }
 
 function gameObject() {
-  if (isGameOver)
+  if (global.isGameOver)
     { 
     return;
 }
   const radius = 60;
-  const x = Math.random() * (canvas.width - 2 * radius) + radius;
+  let random = Math.random();
+  const x = (random * (canvas.width - (2 * radius))) + radius;
   const y = canvas.height;
   const type = Math.random() > 0.9 ? 'bomb' : 'fruit';
-  gameObjects.push(new GameObject(x, y, radius, type));
+  global.gameObjects.push(new GameObject(x, y, radius, type));
 }
 
-canvas.addEventListener('mousemove', function(event) {
-  if (isGameOver) {
+canvas.addEventListener('mousemove', mousemovement);
+function mousemovement(event) {
+  if(global.isGameOver){
     return;
-}
+  }
+  
+  const { clientX, clientY } = event;
 
-  const mouseX = event.clientX;
-  const mouseY = event.clientY;
+  global.gameObjects.forEach((obj, index) => {
+    const distance = Math.sqrt((clientX - obj.x) ** 2 + (clientY - obj.y) ** 2);
+    
 
-  for (let i = 0; i < gameObjects.length; i++) {
-    const obj = gameObjects[i];
-    const distance = Math.sqrt((mouseX - obj.x) ** 2 + (mouseY - obj.y) ** 2);
     if (distance < obj.radius) {
       if (obj.type === 'fruit') {
-        score++;
+        global.score += 1;
+        //console.log('Fruit sliced, new score:', global.score);
       } else if (obj.type === 'bomb') {
-        endGame();
+        global.endGame();
+        //console.log('Bomb sliced, game over');
       }
-      gameObjects.splice(i, 1);
-      break;
+      global.gameObjects.splice(index, 1);
     }
-  }
-});
+  });
+}
 
 function gameProcess() {
     if (isGameOver) 
@@ -137,16 +140,55 @@ function gameProcess() {
     if (finalScoreElement) {
       finalScoreElement.textContent = `Final Score: ${score}`;
     }
-    
+    const player =playerName;
+    fetch('http://localhost:3000/addScore',{
+        method: 'POST',
+        headers: {
+          'Content-Type':'application/json',
+        },
+        body: JSON.stringify({player:player,score:score}),
+    })
+    .then(response =>response.json())
+    .then(data => {
+        console.log('Success:',data);
+    })
+    .catch((error)=>{
+        console.error('Error:',error);
+    });
+    //fetchtopScore();
     endScreen.style.display = 'block';
     clearInterval(gameInterval);
   }
 
+  function fetchTopScores() {
+  fetch('http://localhost:3000/top-scores')
+    .then(response => response.json())
+    .then(scores => {
+      const leaderboard = document.getElementById('leaderboard');
+      leaderboard.innerHTML = '<h3>Top Scores</h3>';
+      scores.forEach((score, index) => {
+        leaderboard.innerHTML += `<p>${index + 1}. ${score.player}: ${score.score}</p>`;
+      });
+    })
+    .catch(error => {
+      console.error('Error fetching top scores:', error);
+    });
+}
+
+
+
+document.getElementById('backButton').addEventListener('click',()=>{
+document.getElementById('leaderBoardSection').style.display='none';
+});
+document.getElementById('leaderBoardButton').addEventListener('click',()=>{
+    fetchtopScore();
+});
 function startGame() {
   isGameOver = false;
   score = 0;
   lives = 3;
   gameObjects.length = 0;
+  playerName=document.getElementById('playerName').value;
   startScreen.style.display = 'none';
   endScreen.style.display = 'none';
   canvas.style.display = 'block';
@@ -154,16 +196,26 @@ function startGame() {
   gameInterval = setInterval(gameObject, spawnRate);
   requestAnimationFrame(gameProcess);
 }
+function showStartScreen() {
+  endScreen.style.display = 'none';
+  startScreen.style.display = 'block';
+  canvas.style.display = 'none';
 
+}
 if (startButton) {
   startButton.addEventListener('click', startGame);
 }
 
 if (restartButton) {
-  restartButton.addEventListener('click', startGame);
+  restartButton.addEventListener('click', showStartScreen);
 }
 
 startScreen.style.display = 'block';
 canvas.style.display = 'none';
 
-module.exports = { GameObject, endGame, gameProcess, startGame };
+
+module.exports = { GameObject, endGame,mousemovement, gameProcess, startGame,gameObject,fetchtopScore };
+//table create
+// connection strign working
+//show chart for a players progress
+//two integration tests- client to server and server to database
