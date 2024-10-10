@@ -18,6 +18,24 @@ const mockGetContext = jest.fn(() => ({
         removeEventListener: mockRemoveEventListener,
       };
     }
+
+  if (selector === '#backButton'){
+    return {
+      addEventListener: jest.fn(),
+    };
+  }
+  if(selector === '#leaderBoardButton'){
+    return {
+      addEventListener: jest.fn(),
+    };
+  }
+  if (selector === '#leaderBoardSection') {
+    return {
+      style: {
+        display: 'block',
+      },
+    };
+  }
     if (selector === '#startButton' || selector === '#restartButton') {
       return {
         addEventListener: mockAddEventListener,
@@ -43,7 +61,22 @@ const mockGetContext = jest.fn(() => ({
     }
     return null;
   });
+  document.getElementById = jest.fn((id) => {
+    if (id === 'backButton') {
+      return {
+        addEventListener: jest.fn(),
+      };
+    }
+    
+    if (id === 'leaderBoardButton') {
+      return {
+        addEventListener: jest.fn(),
+      };
+    }
   
+    // Mock other IDs as needed
+    return null; // Return null for unhandled IDs
+  });
 
   require('../js/game.js'); 
   
