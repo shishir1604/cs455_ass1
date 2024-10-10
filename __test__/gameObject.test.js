@@ -17,6 +17,24 @@ document.querySelector = jest.fn((selector) => {
       style: { display: 'block' },
     };
   }
+
+  if (selector === '#backButton'){
+    return {
+      addEventListener: mockAddEventListener,
+    };
+  }
+  if(selector === '#leaderBoardButton'){
+    return {
+      addEventListener: mockAddEventListener,
+    };
+  }
+  if (selector === '#leaderBoardSection') {
+    return {
+      style: {
+        display: 'none',
+      },
+    };
+  }
   if (selector === '#startScreen' || selector === '#endScreen') {
     return {
       style: { display: 'none' } 
@@ -63,8 +81,23 @@ document.querySelector = jest.fn((selector) => {
   return null;
 });
 
+document.getElementById = jest.fn((id) => {
+  if (id === 'backButton') {
+    return {
+      addEventListener: jest.fn(),
+    };
+  }
+  
+  if (id === 'leaderBoardButton') {
+    return {
+      addEventListener: jest.fn(),
+    };
+  }
 
-const { GameObject, endGame, gameProcess, startGame } = require('../js/game.js');
+  // Mock other IDs as needed
+  return null; // Return null for unhandled IDs
+});
+const { GameObject,gameObject, endGame, gameProcess, startGame } = require('../js/game.js');
 
 describe('GameObject', () => {
   let gameObject;
@@ -85,4 +118,5 @@ describe('GameObject', () => {
     expect(gameObject.velocityY).toBeLessThanOrEqual(4);
     expect(gameObject.gravity).toBe(0.1);
   });
+  test
 });
