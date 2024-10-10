@@ -20,6 +20,24 @@ document.querySelector = jest.fn((selector) => {
       dispatchEvent: mockDispatchEvent,
     };
   }
+
+  if (selector === '#backButton'){
+    return {
+      addEventListener: jest.fn(),
+    };
+  }
+  if(selector === '#leaderBoardButton'){
+    return {
+      addEventListener: jest.fn(),
+    };
+  }
+  if (selector === '#leaderBoardSection') {
+    return {
+      style: {
+        display: 'block',
+      },
+    };
+  }
   if (selector === '#startScreen' || selector === '#endScreen') {
     return {
       style: {
@@ -42,9 +60,73 @@ document.getElementById = jest.fn((id) => {
       }
     };
   }
+  if (id === 'backButton') {
+    return {
+      addEventListener: jest.fn(),
+    };
+  }
+  
+  if (id === 'leaderBoardButton') {
+    return {
+      addEventListener: jest.fn(),
+    };
+  }
   return null;
 });
-
+document.getElementById = jest.fn((id) => {
+  if (id === 'score') {
+    return {
+      _textContent: '',
+      set textContent(value) {
+        this._textContent = value;
+      },
+      get textContent() {
+        return this._textContent;
+      }
+    };
+  }
+  if (id === 'lives') {
+    return {
+      _textContent: '',
+      set textContent(value) {
+        this._textContent = value;
+      },
+      get textContent() {
+        return this._textContent;
+      }
+    };
+  }
+  if (id === 'endScreen') {
+    return {
+      style: {
+        display: 'none',
+      },
+    };
+  }
+  if (id === 'finalScore') {
+    return {
+      _textContent: '',
+      set textContent(value) {
+        this._textContent = value;
+      },
+      get textContent() {
+        return this._textContent;
+      }
+    };
+  }
+  if (id === 'backButton') {
+    return {
+      addEventListener: jest.fn(),
+    };
+  }
+  
+  if (id === 'leaderBoardButton') {
+    return {
+      addEventListener: jest.fn(),
+    };
+  }
+  return null;
+});
 
 const { gameProcess, GameObject, endGame } = require('../js/game.js');
 
