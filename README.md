@@ -104,3 +104,70 @@ Link- https://shishir1604.github.io/cs455_ass1/
   - Added functionality to input player data and update score.
   - Made changes in mousemovement() to better test the mouse coordinates, splicing and other functionalities.
   - Architecture diagram.
+ 
+### Integration tests
+#### update.test.js
+This code sets up unit tests for a GameObject class and a gameObject function using Jest, mocking DOM elements and canvas context. It verifies that GameObject instances update their positions correctly and that new GameObject instances are added to a global array unless the game is over.
+
+#### fetchtopScore()
+This code tests the fetchtopScore function, which fetches high scores from a server and displays them in a leaderboard on a webpage. The tests cover the following scenarios:
+1. **Successful Fetch and Display**:
+   - Mocks a successful fetch response with sample data.
+   - Verifies that the fetch call is made to the correct URL.
+   - Checks that the leaderboard is populated with the correct player names, scores, and formatted dates.
+   - Ensures the leaderboard section is displayed.
+
+2. **Fetch Failure Handling**:
+   - Mocks a fetch failure.
+   - Verifies that an error message is logged to the console.
+
+3. **Missing Leaderboard Element Handling**:
+   - Mocks the absence of the leaderboard element.
+   - Verifies that an appropriate error message is logged to the console.
+
+#### mouse.test.js
+The provided code is a set of unit tests for a JavaScript function called [`mousemovement`]. This function handles mouse movement events in a game where the player slices fruits and avoids bombs. Here's a brief explanation:
+- **Purpose**: To handle mouse movement events and update the game state based on the player's interactions.
+- **Logic**:
+  1. **Check if Game is Over**: If [`global.isGameOver`] is [`true`]the function returns immediately, doing nothing.
+  2. **Extract Mouse Coordinates**: The [`clientX`]and [`clientY`]properties from the event are extracted.
+  3. **Iterate Over Game Objects**: For each object in [`global.gameObjects`]
+     - Calculate the distance between the mouse pointer and the object.
+     - If the distance is less than the object's radius:
+       - If the object is a fruit, increment the score and remove the object.
+       - If the object is a bomb, call the [`global.endGame`] function and remove the object.
+
+### Unit Tests
+
+- **Setup**: Mocks necessary DOM elements and functions, and sets up the initial game state.
+- **Tests**:
+  1. **Fruit Slicing**: Simulates slicing a fruit and checks if the score increments and the fruit is removed.
+  2. **Bomb Slicing**: Simulates slicing a bomb and checks if the [`endGame`]function is called and the bomb is removed.
+  3. **Game Over**: Ensures no actions are taken if the game is already over.
+
+These tests ensure that the [`mousemovement`] function behaves correctly under different scenarios.
+
+
+### Server.cjs
+This code sets up a basic server using Express.js, a popular Node.js framework. Here's a brief overview:
+**Dependencies**: It imports necessary modules (express, cors, sqlite3, body-parser, and path).
+**Express App**: Creates an Express application (app) and sets the server to listen on port 3000.
+**Middleware**:
+- cors(): Enables Cross-Origin Resource Sharing.
+- bodyParser.json(): Parses incoming JSON requests.
+- Serves static files from the css, js, and images directories.
+**SQLite Database**:
+- Creates an in-memory SQLite database.
+- Defines a scores table if it doesn't already exist.
+**Routes**:
+- POST /addScore: Adds a new score to the scores table.
+- GET /high-score: Retrieves the top 10 high scores, ordered by score in descending order.
+- GET /: Serves the index.html file.
+**Server Initialization**: Starts the server if the script is run directly.
+- This setup allows you to add and retrieve high scores for a game, with the data stored in an in-memory SQLite database.
+
+### Refactoring
+
+- game.js: added functionality to input player and fetch data from database to display score as well as update the current player score in database.
+
+
