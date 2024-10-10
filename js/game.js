@@ -165,7 +165,7 @@ function gameProcess() {
       finalScoreElement.textContent = `Final Score: ${score}`;
     }
     const player =playerName;
-    fetch('http://localhost:3000/addScore',{
+    fetch('/addScore',{
         method: 'POST',
         headers: {
           'Content-Type':'application/json'
@@ -185,7 +185,7 @@ function gameProcess() {
   }
 
   function fetchtopScore() {
-    return fetch('http://localhost:3000/high-score')
+    return fetch('/high-score')
       .then(response => response.json())
       .then(score => {
         const leaderBoard = document.getElementById('leaderBoard');
