@@ -122,70 +122,59 @@ const mockGetContext = jest.fn(() => ({
   
 
 
-const { mousemovement } = require('../js/game.js'); // Adjust the import based on your file structure
+  const { mousemovement } = require('../js/game.js');
 
-
-
-describe('mousemovement', () => {
-  beforeEach(() => {
-    // Reset global state before each test
-    jest.clearAllMocks();
-    global.score = 0;
-    global.lives = 3;
-    global.isGameOver = false;
-    global.endGame= jest.fn();
-    global.gameObjects = [
-      { x: 100, y: 100, radius: 30, type: 'fruit' }, // Fruit object
-      { x: 200, y: 200, radius: 30, type: 'bomb' },  // Bomb object
-    ];
-
-
+  describe('mousemovement', () => {
+    let gameState;
+  
+    beforeEach(() => {
+      gameState = {
+        gameObjects: [],
+        isGameOver: false,
+        score: 0,
+        endGame: jest.fn()
+      };
+    });
+  
+    test('should do nothing if game is over', () => {
+      gameState.isGameOver = true;
+      const initialGameObjects = [...gameState.gameObjects];
+      
+      mousemovement({ clientX: 100, clientY: 100 }, gameState);
+      
+      expect(gameState.gameObjects).toEqual(initialGameObjects);
+      expect(gameState.score).toBe(0);
+      expect(gameState.endGame).not.toHaveBeenCalled();
+    });
+  
+    test('should increase score when fruit is sliced', () => {
+      gameState.gameObjects = [{ type: 'fruit', x: 100, y: 100, radius: 20 }];
+      
+      mousemovement({ clientX: 105, clientY: 105 }, gameState);
+      
+      expect(gameState.score).toBe(1);
+      expect(gameState.gameObjects).toHaveLength(0);
+    });
+  
+    test('should end game when bomb is sliced', () => {
+      gameState.gameObjects = [{ type: 'bomb', x: 100, y: 100, radius: 20 }];
+      
+      mousemovement({ clientX: 105, clientY: 105 }, gameState);
+      
+      expect(gameState.endGame).toHaveBeenCalled();
+      expect(gameState.gameObjects).toHaveLength(0);
+    });
+  
+    test('should not affect objects outside of slice radius', () => {
+      gameState.gameObjects = [
+        { type: 'fruit', x: 100, y: 100, radius: 20 },
+        { type: 'bomb', x: 200, y: 200, radius: 20 }
+      ];
+      
+      mousemovement({ clientX: 150, clientY: 150 }, gameState);
+      
+      expect(gameState.score).toBe(0);
+      expect(gameState.gameObjects).toHaveLength(2);
+      expect(gameState.endGame).not.toHaveBeenCalled();
+    });
   });
-
-  test('should increment score when fruit is sliced', () => {
-    // Simulate mouse movement near the fruit
-    const event = {
-      clientX: 115, // Adjusted to be within the fruit's radius
-      clientY: 115, // Adjusted to be within the fruit's radius
-    };
-
-    mousemovement(event); // Call the function
-
-    console.log('Score after slicing fruit:', global.score); // Debugging output
-    console.log('Game objects remaining:', global.gameObjects); // Debugging output
-
-    expect(global.score).toBe(1); // Score should increment
-    expect(global.gameObjects.length).toBe(1); // One object should be removed
-    expect(global.gameObjects[0].type).toBe('bomb'); // Remaining object is bomb
-  });
-
-  test('should call endGame when bomb is sliced', () => {
-    // Simulate mouse movement near the bomb
-    const event = {
-      clientX: 215, // Adjusted to be within the bomb's radius
-      clientY: 215, // Adjusted to be within the bomb's radius
-    };
-
-    mousemovement(event); // Call the function
-
-    expect(global.endGame).toHaveBeenCalled(); // endGame should be called
-    expect(global.gameObjects.length).toBe(1); // One object should be removed
-    expect(global.gameObjects[0].type).toBe('fruit'); // Remaining object is fruit
-  });
-
-  test('should not do anything if the game is over', () => {
-    global.isGameOver = true; // Set game over
- 
-    // Simulate mouse movement near the fruit
-    const event = {
-      clientX: 115, // Adjusted to be within the fruit's radius
-      clientY: 115, // Adjusted to be within the fruit's radius
-    };
-
-    mousemovement(event); // Call the function
-
-    expect(global.score).toBe(0); // Score should not change
-    expect(global.gameObjects.length).toBe(2); // No objects should be removed
-    expect(global.endGame).not.toHaveBeenCalled(); // endGame should not be called
-  });
-});
