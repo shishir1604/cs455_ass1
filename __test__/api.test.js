@@ -41,3 +41,16 @@ describe('GET /high-score',()=>{
         await req(app).get('/high-score').expect(200);
     });
 });
+describe('POST /addScore', ()=>{
+    it('responds with 200 and returns score saved',async ()=>{
+        const add=await req(app)
+        .post('/addScore')
+        .send({
+            player:'test1',
+            score:100,
+            date:new Date().toISOString(),
+        });
+        expect(add.statusCode).toBe(200);
+        expect(add.text).toBe('score saved');
+    });
+});
