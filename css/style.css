@@ -70,3 +70,47 @@ button:hover {
     color: #3b3b3b;
     box-shadow: 0 0 15px rgba(255, 255, 255, 70%);
 }
+#leaderBoardSection {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  /* Leaderboard table styling */
+  .leaderboard-table {
+    width: 100%;
+    border-collapse: separate; /* Ensure border-spacing takes effect */
+    border-spacing: 10px; /* Adds spacing between the rows and columns */
+    margin-top: 10px;
+  }
+  
+  .leaderboard-table th, .leaderboard-table td {
+    border: 1px solid #ddd; /* Border around the table cells */
+    padding: 12px; /* Padding inside the cells for more spacing */
+    text-align: left;
+    background-color: #fff; /* White background for better visibility */
+  }
+  
+  .leaderboard-table th {
+    background-color: #4CAF50; /* Header background color */
+    color: white;
+  }
+  
+  .leaderboard-table tr:nth-child(even) {
+    background-color: #f2f2f2; /* Zebra striping effect for rows */
+  }
+  
+  .leaderboard-table tr:hover {
+    background-color: #ddd; /* Hover effect for table rows */
+  }
+  
+  /* Additional styling for better appearance */
+  .leaderboard-table td {
+    font-size: 16px;
+    color: #333;
+  }
+  
