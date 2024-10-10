@@ -9,6 +9,8 @@
 <body>
     <div id="startScreen" class="screen">
         <h1>Fruit Ninja</h1>
+        <div >Player name</div>
+        <input type="text" id="playerName" placeholder="Enter your name"><br>
         <button id="startButton">Start</button>
     </div>
     <canvas id="gameCanvas"></canvas>
@@ -17,9 +19,14 @@
     <div id="endScreen" class="screen">
         <div>Game Over!</div>
         <div id="finalScore">Final Score: 0</div>
+        <button id="leaderBoardButton">LeaderBoard</button>
+         <!-- <div id="leaderBoard">LeaderBoard</div> -->
         <button id="restartButton">Restart</button>
     </div>
-    
+    <div id="leaderBoardSection" class="screen" style="display: none;">
+        <div id="leaderBoard"></div>
+        <button id="backButton">Back</button>
+    </div>
     <script src="js/game.js"></script>
 </body>
 </html>
