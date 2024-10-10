@@ -167,4 +167,4 @@ This code sets up a basic server using Express.js, a popular Node.js framework. 
  - game.js: added functionality to input player and fetch data from database to display score as well as update the current player score in database.
 
 ### Testing Pyramid ###
-  - ! [Testing diagram]([https://github.com/shishir1604/cs455_ass1/blob/main/Diagrams/Client-Server%20Architecture.png])
+  - ![Testing diagram]([https://github.com/shishir1604/cs455_ass1/blob/main/Diagrams/Client-Server%20Architecture.png])
