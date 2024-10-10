@@ -155,28 +155,59 @@ function gameProcess() {
     .catch((error)=>{
         console.error('Error:',error);
     });
-    //fetchtopScore();
+  
     endScreen.style.display = 'block';
     clearInterval(gameInterval);
   }
 
-  function fetchTopScores() {
-  fetch('http://localhost:3000/top-scores')
-    .then(response => response.json())
-    .then(scores => {
-      const leaderboard = document.getElementById('leaderboard');
-      leaderboard.innerHTML = '<h3>Top Scores</h3>';
-      scores.forEach((score, index) => {
-        leaderboard.innerHTML += `<p>${index + 1}. ${score.player}: ${score.score}</p>`;
+  function fetchtopScore() {
+    return fetch('http://localhost:3000/high-score')
+      .then(response => response.json())
+      .then(score => {
+        const leaderBoard = document.getElementById('leaderBoard');
+        if (!leaderBoard) {
+          console.error('leaderBoard element not found');
+          return;
+        }
+        leaderBoard.innerHTML = ''; 
+  
+        const table = document.createElement('table');
+        table.classList.add('leaderboard-table'); 
+  
+
+        const headerRow = document.createElement('tr');
+        headerRow.innerHTML = `
+          <th>Player</th>
+          <th>Score</th>
+          <th>Date</th>
+        `;
+        table.appendChild(headerRow);
+  
+      
+        score.forEach(row => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td>${row.player}</td>
+            <td>${row.score}</td>
+            <td>${new Date(row.date).toLocaleDateString()}</td>
+          `;
+          table.appendChild(tr);
+        });
+  
+        leaderBoard.appendChild(table);
+        console.log('leaderboard.innerHTML', leaderBoard.innerHTML);
+        
+        const leaderBoardSection = document.getElementById('leaderBoardSection');
+        if (leaderBoardSection) {
+          leaderBoardSection.style.display = 'block';
+        } else {
+          console.error('leaderBoardSection element not found');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
       });
-    })
-    .catch(error => {
-      console.error('Error fetching top scores:', error);
-    });
-}
-
-
-
+  }
 document.getElementById('backButton').addEventListener('click',()=>{
 document.getElementById('leaderBoardSection').style.display='none';
 });
@@ -215,7 +246,3 @@ canvas.style.display = 'none';
 
 
 module.exports = { GameObject, endGame,mousemovement, gameProcess, startGame,gameObject,fetchtopScore };
-//table create
-// connection strign working
-//show chart for a players progress
-//two integration tests- client to server and server to database
