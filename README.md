@@ -107,7 +107,7 @@ Link- https://shishir1604.github.io/cs455_ass1/
  
 ### Integration tests ###
 
-#### update.test.js ####
+- **update.test.js** -
  - This code sets up unit tests for a GameObject class and a gameObject function using Jest, mocking DOM elements and canvas context. It verifies that GameObject instances update their positions correctly and that new GameObject instances are added to a global array unless the game is over.
 
 #### fetchtopscore.test.js ####
