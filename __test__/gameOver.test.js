@@ -18,6 +18,24 @@ const mockGetContext = jest.fn(() => ({
         dispatchEvent: jest.fn(), 
       };
     }
+
+  if (selector === '#backButton'){
+    return {
+      addEventListener: jest.fn(),
+    };
+  }
+  if(selector === '#leaderBoardButton'){
+    return {
+      addEventListener: jest.fn(),
+    };
+  }
+  if (selector === '#leaderBoardSection') {
+    return {
+      style: {
+        display: 'block',
+      },
+    };
+  }
     if (selector === '#startButton' || selector === '#restartButton') {
       return {
         addEventListener: mockAddEventListener,
@@ -51,7 +69,22 @@ const mockGetContext = jest.fn(() => ({
     return null;
   });
   
+  document.getElementById = jest.fn((id) => {
+    if (id === 'backButton') {
+      return {
+        addEventListener: jest.fn(),
+      };
+    }
+    
+    if (id === 'leaderBoardButton') {
+      return {
+        addEventListener: jest.fn(),
+      };
+    }
   
+    // Mock other IDs as needed
+    return null; // Return null for unhandled IDs
+  });
   global.score = 0;
   global.lives = 1; 
   global.isGameOver = false;
@@ -61,7 +94,12 @@ const mockGetContext = jest.fn(() => ({
   
   global.setInterval = mockSetInterval;
   global.clearInterval = mockClearInterval;
-  
+  global.prompt=jest.fn(()=>'test player');
+    global.fetch=jest.fn(()=>
+      Promise.resolve({
+        json: () => Promise.resolve({message:'score saved'}),
+      })
+    );
   
   const { endGame } = require('../js/game.js');
   
