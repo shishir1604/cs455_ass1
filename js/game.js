@@ -144,9 +144,9 @@ function gameProcess() {
     fetch('http://localhost:3000/addScore',{
         method: 'POST',
         headers: {
-          'Content-Type':'application/json',
+          'Content-Type':'application/json'
         },
-        body: JSON.stringify({player:player,score:score}),
+        body: JSON.stringify({ player:player,score:score })
     })
     .then(response =>response.json())
     .then(data => {
@@ -155,7 +155,7 @@ function gameProcess() {
     .catch((error)=>{
         console.error('Error:',error);
     });
-  
+
     endScreen.style.display = 'block';
     clearInterval(gameInterval);
   }
@@ -183,7 +183,7 @@ function gameProcess() {
         `;
         table.appendChild(headerRow);
   
-      
+        
         score.forEach(row => {
           const tr = document.createElement('tr');
           tr.innerHTML = `
