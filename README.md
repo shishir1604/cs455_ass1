@@ -105,26 +105,26 @@ Link- https://shishir1604.github.io/cs455_ass1/
   - Made changes in mousemovement() to better test the mouse coordinates, splicing and other functionalities.
   - Architecture diagram.
  
-### Integration tests
+### Integration tests ###
 
-#### update.test.js
+#### update.test.js ####
 - This code sets up unit tests for a GameObject class and a gameObject function using Jest, mocking DOM elements and canvas context. It verifies that GameObject instances update their positions correctly and that new GameObject instances are added to a global array unless the game is over.
 
-#### fetchtopscore.test.js
+#### fetchtopscore.test.js ####
 - This code tests the fetchtopScore function, which fetches high scores from a server and displays them in a leaderboard on a webpage. The tests cover the following scenarios:
-1. **Successful Fetch and Display**:
-   - Mocks a successful fetch response with sample data.
-   - Verifies that the fetch call is made to the correct URL.
-   - Checks that the leaderboard is populated with the correct player names, scores, and formatted dates.
-   - Ensures the leaderboard section is displayed.
-2. **Fetch Failure Handling**:
-   - Mocks a fetch failure.
-   - Verifies that an error message is logged to the console.
-3. **Missing Leaderboard Element Handling**:
-   - Mocks the absence of the leaderboard element.
-   - Verifies that an appropriate error message is logged to the console.
+    1. **Successful Fetch and Display**:
+       - Mocks a successful fetch response with sample data.
+       - Verifies that the fetch call is made to the correct URL.
+       - Checks that the leaderboard is populated with the correct player names, scores, and formatted dates.
+       - Ensures the leaderboard section is displayed.
+    2. **Fetch Failure Handling**:
+       - Mocks a fetch failure.
+       - Verifies that an error message is logged to the console.
+    3. **Missing Leaderboard Element Handling**:
+       - Mocks the absence of the leaderboard element.
+       - Verifies that an appropriate error message is logged to the console.
 
-#### mouse.test.js
+#### mouse.test.js ####
 - The provided code is a set of unit tests for a JavaScript function called [`mousemovement`]. This function handles mouse movement events in a game where the player slices fruits and avoids bombs. Here's a brief explanation:
 - **Purpose**: To handle mouse movement events and update the game state based on the player's interactions.
 - **Logic**:
@@ -136,7 +136,7 @@ Link- https://shishir1604.github.io/cs455_ass1/
        - If the object is a fruit, increment the score and remove the object.
        - If the object is a bomb, call the [`global.endGame`] function and remove the object.
 
-### Unit Tests
+### Unit Tests ###
 - **Setup**: Mocks necessary DOM elements and functions, and sets up the initial game state.
 - **Tests**:
   1. **Fruit Slicing**: Simulates slicing a fruit and checks if the score increments and the fruit is removed.
@@ -145,7 +145,7 @@ Link- https://shishir1604.github.io/cs455_ass1/
 - These tests ensure that the [`mousemovement`] function behaves correctly under different scenarios.
 
 
-### Server.cjs
+### Server.cjs ###
 This code sets up a basic server using Express.js, a popular Node.js framework. Here's a brief overview:
 1. **Dependencies**: It imports necessary modules (express, cors, sqlite3, body-parser, and path).
 2. **Express App**: Creates an Express application (app) and sets the server to listen on port 3000.
@@ -163,7 +163,7 @@ This code sets up a basic server using Express.js, a popular Node.js framework. 
 6. **Server Initialization**: Starts the server if the script is run directly.
 - This setup allows you to add and retrieve high scores for a game, with the data stored in an in-memory SQLite database.
 
-### Refactoring
+### Refactoring ###
 - game.js: added functionality to input player and fetch data from database to display score as well as update the current player score in database.
 
 
