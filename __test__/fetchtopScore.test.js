@@ -134,3 +134,27 @@ describe('fetchtopScore', () => {
 
     expect(mockLeaderBoardSection.style.display).toBe('block');
   });
+
+  test('handles error when fetching fails', async () => {
+    const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation();
+    const fetchError = new Error('Fetch failed');
+    global.fetch.mockRejectedValue(fetchError);
+
+    await fetchtopScore();
+
+    expect(consoleErrorSpy).toHaveBeenCalledWith('Error:', fetchError);
+
+    consoleErrorSpy.mockRestore();
+  });
+
+  test('handles missing leaderBoard element', async () => {
+    const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation();
+    document.getElementById = jest.fn(() => null);
+
+    await fetchtopScore();
+
+    expect(consoleErrorSpy).toHaveBeenCalledWith('leaderBoard element not found');
+
+    consoleErrorSpy.mockRestore();
+  });
+});
