@@ -168,3 +168,7 @@ This code sets up a basic server using Express.js, a popular Node.js framework. 
 
 ### Testing Pyramid ###
   - ![Testing diagram](https://github.com/shishir1604/cs455_ass1/blob/main/Diagrams/Testing%20Pyramid.png)
+### Game Logic ###
+  - ![Game Logic](https://github.com/shishir1604/cs455_ass1/blob/main/Diagrams/Game%20Logic.png)
+### Client-Server Architecture ###
+  - ![Client-Server Architecture](https://github.com/shishir1604/cs455_ass1/blob/main/Diagrams/Client-Server%20Architecture.png)
