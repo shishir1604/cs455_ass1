@@ -150,20 +150,20 @@ These tests ensure that the [`mousemovement`] function behaves correctly under d
 
 ### Server.cjs
 This code sets up a basic server using Express.js, a popular Node.js framework. Here's a brief overview:
-**Dependencies**: It imports necessary modules (express, cors, sqlite3, body-parser, and path).
-**Express App**: Creates an Express application (app) and sets the server to listen on port 3000.
-**Middleware**:
+1. **Dependencies**: It imports necessary modules (express, cors, sqlite3, body-parser, and path).
+2. **Express App**: Creates an Express application (app) and sets the server to listen on port 3000.
+3. **Middleware**:
 - cors(): Enables Cross-Origin Resource Sharing.
 - bodyParser.json(): Parses incoming JSON requests.
 - Serves static files from the css, js, and images directories.
-**SQLite Database**:
+4. **SQLite Database**:
 - Creates an in-memory SQLite database.
 - Defines a scores table if it doesn't already exist.
-**Routes**:
+5. **Routes**:
 - POST /addScore: Adds a new score to the scores table.
 - GET /high-score: Retrieves the top 10 high scores, ordered by score in descending order.
 - GET /: Serves the index.html file.
-**Server Initialization**: Starts the server if the script is run directly.
+6. **Server Initialization**: Starts the server if the script is run directly.
 - This setup allows you to add and retrieve high scores for a game, with the data stored in an in-memory SQLite database.
 
 ### Refactoring
