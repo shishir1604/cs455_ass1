@@ -21,6 +21,23 @@ document.querySelector = jest.fn((selector) => {
       addEventListener: jest.fn(),
     };
   }
+  if (selector === '#backButton'){
+    return {
+      addEventListener: jest.fn(),
+    };
+  }
+  if(selector === '#leaderBoardButton'){
+    return {
+      addEventListener: jest.fn(),
+    };
+  }
+  if (selector === '#leaderBoardSection') {
+    return {
+      style: {
+        display: 'block',
+      },
+    };
+  }
   if (selector === '#startScreen') {
     return {
       style: {
@@ -28,6 +45,7 @@ document.querySelector = jest.fn((selector) => {
       },
     };
   }
+  
   if (selector === '#endScreen') {
     return {
       style: {
@@ -78,6 +96,17 @@ document.getElementById = jest.fn((id) => {
       get textContent() {
         return this._textContent;
       }
+    };
+  }
+  if (id === 'backButton') {
+    return {
+      addEventListener: jest.fn(),
+    };
+  }
+  
+  if (id === 'leaderBoardButton') {
+    return {
+      addEventListener: jest.fn(),
     };
   }
   return null;
