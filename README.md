@@ -109,7 +109,7 @@ Link- https://shishir1604.github.io/cs455_ass1/
 #### update.test.js
 This code sets up unit tests for a GameObject class and a gameObject function using Jest, mocking DOM elements and canvas context. It verifies that GameObject instances update their positions correctly and that new GameObject instances are added to a global array unless the game is over.
 
-#### fetchtopScore()
+#### fetchtopscore.test.js
 This code tests the fetchtopScore function, which fetches high scores from a server and displays them in a leaderboard on a webpage. The tests cover the following scenarios:
 1. **Successful Fetch and Display**:
    - Mocks a successful fetch response with sample data.
