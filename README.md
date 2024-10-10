@@ -110,8 +110,8 @@ Link- https://shishir1604.github.io/cs455_ass1/
 - **update.test.js**
   - This code sets up unit tests for a GameObject class and a gameObject function using Jest, mocking DOM elements and canvas context. It verifies that GameObject instances update their positions correctly and that new GameObject instances are added to a global array unless the game is over.
 
-#### fetchtopscore.test.js ####
- - This code tests the fetchtopScore function, which fetches high scores from a server and displays them in a leaderboard on a webpage. The tests cover the following scenarios:
+- **fetchtopscore.test.js**
+  - This code tests the fetchtopScore function, which fetches high scores from a server and displays them in a leaderboard on a webpage. The tests cover the following scenarios:
      1. **Successful Fetch and Display**:
         - Mocks a successful fetch response with sample data.
         - Verifies that the fetch call is made to the correct URL.
@@ -124,17 +124,17 @@ Link- https://shishir1604.github.io/cs455_ass1/
         - Mocks the absence of the leaderboard element.
         - Verifies that an appropriate error message is logged to the console.
 
-#### mouse.test.js ####
-- The provided code is a set of unit tests for a JavaScript function called [`mousemovement`]. This function handles mouse movement events in a game where the player slices fruits and avoids bombs. Here's a brief explanation:
-- **Purpose**: To handle mouse movement events and update the game state based on the player's interactions.
-- **Logic**:
-  1. **Check if Game is Over**: If [`global.isGameOver`] is [`true`]the function returns immediately, doing nothing.
-  2. **Extract Mouse Coordinates**: The [`clientX`]and [`clientY`]properties from the event are extracted.
-  3. **Iterate Over Game Objects**: For each object in [`global.gameObjects`]
-     - Calculate the distance between the mouse pointer and the object.
-     - If the distance is less than the object's radius:
-       - If the object is a fruit, increment the score and remove the object.
-       - If the object is a bomb, call the [`global.endGame`] function and remove the object.
+- **mouse.test.js**
+  - The provided code is a set of unit tests for a JavaScript function called [`mousemovement`]. This function handles mouse movement events in a game where the player slices fruits and avoids bombs. Here's a brief explanation:
+    - **Purpose**: To handle mouse movement events and update the game state based on the player's interactions.
+    - **Logic**:
+      1. **Check if Game is Over**: If [`global.isGameOver`] is [`true`]the function returns immediately, doing nothing.
+      2. **Extract Mouse Coordinates**: The [`clientX`]and [`clientY`]properties from the event are extracted.
+      3. **Iterate Over Game Objects**: For each object in [`global.gameObjects`]
+         - Calculate the distance between the mouse pointer and the object.
+         - If the distance is less than the object's radius:
+           - If the object is a fruit, increment the score and remove the object.
+           - If the object is a bomb, call the [`global.endGame`] function and remove the object.
 
 ### Unit Tests ###
  - **Setup**: Mocks necessary DOM elements and functions, and sets up the initial game state.
