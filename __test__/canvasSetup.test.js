@@ -16,6 +16,28 @@ const mockGetContext = jest.fn(() => ({
         style: { display: 'block' },
       };
     }
+    if(selector === '#playerName'){
+      return {
+        value: 'test',
+      };
+    }
+    if (selector === '#backButton'){
+      return {
+        addEventListener: jest.fn(),
+      };
+    }
+    if(selector === '#leaderBoardButton'){
+      return {
+        addEventListener: jest.fn(),
+      };
+    }
+    if (selector === '#leaderBoardSection') {
+      return {
+        style: {
+          display: 'block',
+        },
+      };
+    }
     if (selector === '#startScreen') {
       return {
         style: {
@@ -44,7 +66,26 @@ const mockGetContext = jest.fn(() => ({
     return null;
   });
   
-  
+  document.getElementById = jest.fn((id) => {
+    if (id === 'backButton') {
+      return {
+        addEventListener: jest.fn(),
+      };
+    }
+    
+    if (id === 'leaderBoardButton') {
+      return {
+        addEventListener: jest.fn(),
+      };
+    }
+    if(id === 'playerName'){
+      return {
+        value: 'test',
+      };
+    } 
+    // Mock other IDs as needed
+    return null; // Return null for unhandled IDs
+  });
   global.score = 0;
   global.lives = 1; 
   global.isGameOver = false;
