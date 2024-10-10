@@ -89,3 +89,18 @@ Link- https://shishir1604.github.io/cs455_ass1/
 8. **clearCanvas.test.js**
    - **Test: should clear canvas before redrawing**
      - **Description:** Verifies that the canvas is cleared before new drawings are rendered to avoid visual artifacts.
+
+## Assignment 3:  Multi-tiered Client-Server Architecture
+### Task Distribution
+- Worked cumulatively on testing the fetch api to post(/addscore) and get(/highscore) the data  and server retrieval when accessing root(/).
+- Collaborated to write the fetchtopScore() to fetch the data from database and display in a proper format.
+- **Ayush Yadav** -
+  - Sorting and fetching top 10 high scores from database and displaying on endscreen.
+  - Made changes in the GameObject class and game object to align with updateTest.js in order to the functionalities.
+  - Fetch data and display.
+  - Test Pyramid.
+- **Shishir** -
+  - Database creation and adding scores.
+  - Added functionality to input player data and update score.
+  - Made changes in mousemovement() to better test the mouse coordinates, splicing and other functionalities.
+  - Architecture diagram.
