@@ -121,7 +121,7 @@ describe('fetchtopScore', () => {
     await fetchtopScore();
 
     
-    expect(fetch).toHaveBeenCalledWith('http://localhost:3000/high-score');
+    expect(fetch).toHaveBeenCalledWith('/high-score');
 
 
     expect(mockLeaderBoard.innerHTML).toContain('Player1');
