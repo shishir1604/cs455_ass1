@@ -39,4 +39,25 @@ app.post('/addScore', (req,res)=>{
         }
     });
 });
+app.get('/high-score',(req,res)=>{
+    db.all('SELECT * FROM scores ORDER BY score DESC LIMIT 10',(err,row)=>{
+        if(err){
+            console.log('error occured while getting high score',err.message);
+            res.status(500).send('error getting high score');
+        }
+        else{
+            res.status(200).send(row);
+            console.log('high score fetched');
+        }
+    });
+
+});
+app.get('/',(req,res)=>{
+    res.status(200).sendFile(path.join(__dirname,'index.html'));
+});
+if(require.main===module){
+    app.listen(port,()=>{
+        console.log('server is running on port',port);
+    });
+}
 module.exports=app;
