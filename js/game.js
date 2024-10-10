@@ -36,6 +36,8 @@ const fruitImages = [
 const bombImage = new Image();
 bombImage.src = 'images/bomb1-removebg-preview.png';
 
+// ... (your existing code)
+
 class GameObject {
   constructor(x, y, radius, type) {
     this.x = x;
@@ -65,20 +67,32 @@ class GameObject {
 }
 
 function gameObject() {
-  if (isGameOver)
-    { 
+  console.log('gameObject function called');
+  console.log('isGameOver:', isGameOver);
+  console.log('canvas:', canvas);
+  console.log('gameObjects before:', gameObjects);
+
+  if (isGameOver) { 
+    console.log('Game is over, returning');
     return;
-}
+  }
   const radius = 60;
   let random = Math.random();
   const x = (random * (canvas.width - (2 * radius))) + radius;
   const y = canvas.height;
   const type = Math.random() > 0.9 ? 'bomb' : 'fruit';
+  console.log('Creating new GameObject:', { x, y, radius, type });
   gameObjects.push(new GameObject(x, y, radius, type));
+
+  console.log('gameObjects after:', gameObjects);
 }
 
-canvas.addEventListener('mousemove', mousemovement);
-function mousemovement(event) {
+
+
+
+
+function mousemovement(event, gameState) {
+  const { gameObjects, isGameOver, score, endGame } = gameState;
   if(isGameOver){
     return;
   }
@@ -88,20 +102,29 @@ function mousemovement(event) {
   gameObjects.forEach((obj, index) => {
     const distance = Math.sqrt((clientX - obj.x) ** 2 + (clientY - obj.y) ** 2);
     
-
     if (distance < obj.radius) {
       if (obj.type === 'fruit') {
-        score += 1;
-        //console.log('Fruit sliced, new score:', global.score);
+        gameState.score += 1;
       } else if (obj.type === 'bomb') {
         endGame();
-        //console.log('Bomb sliced, game over');
       }
       gameObjects.splice(index, 1);
     }
   });
 }
-
+// This wrapper function will be used as the event listener
+function mousemovementWrapper(event) {
+  const gameState = {
+    gameObjects,
+    isGameOver,
+    score,
+    endGame
+  };
+  mousemovement(event, gameState);
+  // Update the global score if it changed
+  score = gameState.score;
+}
+canvas.addEventListener('mousemove', mousemovementWrapper);
 function gameProcess() {
   console.log('gameProcess called');
     if (isGameOver) 
@@ -251,4 +274,4 @@ console.log('game.js loaded');
 canvas.style.display = 'none';
 
 
-module.exports = { GameObject, endGame,mousemovement, gameProcess, startGame,gameObject,fetchtopScore };
+module.exports = { GameObject, endGame,mousemovement, gameProcess, startGame,gameObject,fetchtopScore,gameObjects };
