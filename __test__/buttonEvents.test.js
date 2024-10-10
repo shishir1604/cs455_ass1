@@ -16,6 +16,28 @@ const mockGetContext = jest.fn(() => ({
         style: { display: 'block' },
       };
     }
+    if (selector === '#backButton'){
+      return {
+        addEventListener: jest.fn(),
+      };
+    }
+    if(selector === '#leaderBoardButton'){
+      return {
+        addEventListener: jest.fn(),
+      };
+    }
+    if (selector === '#leaderBoardSection') {
+      return {
+        style: {
+          display: 'block',
+        },
+      };
+    }
+    if(selector === '#playerName'){
+      return {
+        value: 'test',
+      };
+    }
     if (selector === '#startButton' || selector === '#restartButton') {
       return {
         addEventListener: mockAddEventListener,
@@ -48,7 +70,89 @@ const mockGetContext = jest.fn(() => ({
     }
     return null;
   });
-  
+  document.getElementById = jest.fn((id) => {
+    if (id === 'backButton') {
+      return {
+        addEventListener: jest.fn(),
+      };
+    }
+    if(id === 'leaderBoardButton'){
+      return {
+        addEventListener: jest.fn(),
+      };
+    }
+    if (id === 'leaderBoardSection') {
+      return {
+        style: {
+          display: 'block',
+        },
+      };
+    }
+    if (id === 'startScreen') {
+      return {
+        style: {
+          display: 'block',
+        },
+      };
+    }
+    if (id === 'endScreen') {
+      return {
+        style: {
+          display: 'none',
+        },
+      };
+    }
+    if (id === 'finalScore') {
+      return {
+        _textContent: '', 
+        set textContent(value) {
+          this._textContent = value;
+        },
+        get textContent() {
+          return this._textContent;
+        }
+      };
+    }
+    if (id === 'backButton') {
+      return {
+        addEventListener: jest.fn(),
+      };
+    }
+    if (id === 'leaderBoardButton') {
+      return {
+        addEventListener: jest.fn(),
+      };
+    }
+    if (id === 'score') {
+      return {
+        textContent: '',
+        set textContent(value) {
+          this._textContent = value;
+        },
+        get textContent() {
+          return this._textContent;
+        }
+      };
+    }
+    if (id === 'lives') {
+      return {
+        textContent: '',
+        set textContent(value) {
+          this._textContent = value;
+        },
+        get textContent() {
+          return this._textContent;
+        }
+      };
+    }
+    if (id === 'playerName') {
+      return {
+        value: 'test',
+      };
+    }
+    // Mock other IDs as needed
+    return null; // Return null for unhandled IDs
+  });
 
   global.score = 0;
   global.lives = 1;
