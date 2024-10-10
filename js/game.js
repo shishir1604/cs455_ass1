@@ -65,7 +65,7 @@ class GameObject {
 }
 
 function gameObject() {
-  if (global.isGameOver)
+  if (isGameOver)
     { 
     return;
 }
@@ -74,35 +74,36 @@ function gameObject() {
   const x = (random * (canvas.width - (2 * radius))) + radius;
   const y = canvas.height;
   const type = Math.random() > 0.9 ? 'bomb' : 'fruit';
-  global.gameObjects.push(new GameObject(x, y, radius, type));
+  gameObjects.push(new GameObject(x, y, radius, type));
 }
 
 canvas.addEventListener('mousemove', mousemovement);
 function mousemovement(event) {
-  if(global.isGameOver){
+  if(isGameOver){
     return;
   }
   
   const { clientX, clientY } = event;
 
-  global.gameObjects.forEach((obj, index) => {
+  gameObjects.forEach((obj, index) => {
     const distance = Math.sqrt((clientX - obj.x) ** 2 + (clientY - obj.y) ** 2);
     
 
     if (distance < obj.radius) {
       if (obj.type === 'fruit') {
-        global.score += 1;
+        score += 1;
         //console.log('Fruit sliced, new score:', global.score);
       } else if (obj.type === 'bomb') {
-        global.endGame();
+        endGame();
         //console.log('Bomb sliced, game over');
       }
-      global.gameObjects.splice(index, 1);
+      gameObjects.splice(index, 1);
     }
   });
 }
 
 function gameProcess() {
+  console.log('gameProcess called');
     if (isGameOver) 
         {
         return;
@@ -114,7 +115,7 @@ function gameProcess() {
       const obj = gameObjects[i];
       obj.update();
       obj.draw();
-  
+      
       if (obj.y > canvas.height) {
         if (obj.type === 'fruit') {
           lives--;
@@ -155,7 +156,7 @@ function gameProcess() {
     .catch((error)=>{
         console.error('Error:',error);
     });
-
+    //fetchtopScore();
     endScreen.style.display = 'block';
     clearInterval(gameInterval);
   }
@@ -215,6 +216,7 @@ document.getElementById('leaderBoardButton').addEventListener('click',()=>{
     fetchtopScore();
 });
 function startGame() {
+  console.log('startGame called');
   isGameOver = false;
   score = 0;
   lives = 3;
@@ -223,9 +225,11 @@ function startGame() {
   startScreen.style.display = 'none';
   endScreen.style.display = 'none';
   canvas.style.display = 'block';
+  console.log('gamecnvas displayed');
   clearInterval(gameInterval);
   gameInterval = setInterval(gameObject, spawnRate);
   requestAnimationFrame(gameProcess);
+  console.log('gameProcess started');
 }
 function showStartScreen() {
   endScreen.style.display = 'none';
@@ -235,6 +239,7 @@ function showStartScreen() {
 }
 if (startButton) {
   startButton.addEventListener('click', startGame);
+  console.log('startButton event listener added');
 }
 
 if (restartButton) {
@@ -242,6 +247,7 @@ if (restartButton) {
 }
 
 startScreen.style.display = 'block';
+console.log('game.js loaded');
 canvas.style.display = 'none';
 
 
