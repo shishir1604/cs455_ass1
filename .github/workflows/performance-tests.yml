@@ -1,0 +1,31 @@
+name: Performance Tests
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Every night at midnight
+  workflow_dispatch:
+
+jobs:
+  client_performance:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: Install dependencies
+        run: npm install
+      - name: Run Selenium Load Test
+        run: node path/to/your/selenium/client_load_test.cjs
+
+  server_performance:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Install k6
+        run: sudo apt-get install -y k6
+      - name: Run Server Load Test
+        run: k6 run path/to/your/k6/server_side_test.cjs
