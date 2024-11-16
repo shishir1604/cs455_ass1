@@ -183,7 +183,7 @@ This code sets up a basic server using Express.js, a popular Node.js framework. 
   - Setup: Simulate 10 concurrent users requesting your game page
   - ![Server Side_Test](https://github.com/shishir1604/cs455_ass1/blob/main/Diagrams/server_side_test.png)
 **Client-Side Performance Testing**
-
+  - ![Client Side_Test](https://github.com/shishir1604/cs455_ass1/blob/main/Diagrams/client_side_test.png)
 
 ### Part 2: Reliability and Failover Mechanisms
   #### LoadBalancer
