@@ -196,7 +196,9 @@ This code sets up a basic server using Express.js, a popular Node.js framework. 
 **Client-Side Performance Testing**
   - Track performance by logging load times to analyze responsiveness using Selenium.
   ![Client Side_Test](https://github.com/shishir1604/cs455_ass1/blob/main/Diagrams/client_side_test.png)
-
+**Automate Performance testing**
+  - [Here](.github/workflows/performance-tests.yml)
+    
 ### Part 2: Reliability and Failover Mechanisms
   #### LoadBalancer
   - **Objective:** Evenly distribute incoming traffic across multiple primary servers.
