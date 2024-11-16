@@ -174,6 +174,19 @@ This code sets up a basic server using Express.js, a popular Node.js framework. 
   - ![Client-Server Architecture](https://github.com/shishir1604/cs455_ass1/blob/main/Diagrams/Client-Server%20Architecture.png)
 
 ## Assignment 4: Performance Testing and Reliability Enhancements
+
+### Task Distribution
+- Worked cumulatively on testing the fetch api to post(/addscore) and get(/highscore) the data  and server retrieval when accessing root(/).
+- Collaborated to write the fetchtopScore() to fetch the data from database and display in a proper format.
+- **Ayush Yadav** -
+  - Measured the load time of the game client and leaderboard page using Selenium to simulate real user interactions.
+  - Added server-side performance tests to the nightly GitHub Actions workflow, ensuring automated and regular performance evaluations.
+  - Updated the README with detailed documentation along with proper visuals.
+- **Shishir** -
+  - Conducted load testing for the game and leaderboard pages using k6, and Artillery with up to 10 concurrent users.
+  - Implemented load balancing using a round-robin approach across multiple server instances to distribute incoming traffic evenly.
+  - Set up a failover mechanism with a primary and backup server for server monitoring. 
+
 **Primary Server** [PS1](https://cs455-ass1.onrender.com) [PS2](https://cs455-ass1-1.onrender.com)
 **Backup Server** [BS](https://twocs455-ass1.onrender.com)
 **LoadBalancer Server** [LBS](https://cs455-loadbalancer.onrender.com)
