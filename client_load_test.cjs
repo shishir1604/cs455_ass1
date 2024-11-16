@@ -1,16 +1,35 @@
-const { Builder, By, until } = require('selenium-webdriver');
+const { Builder, By } = require('selenium-webdriver');
 const chrome = require('selenium-webdriver/chrome');
 
-(async function loadTimeTest() {
-    let driver = await new Builder().forBrowser('chrome').setChromeOptions(new chrome.Options()).build();
-    try {
-        let start = Date.now();
-        // await driver.get('https://cs455-ass1.onrender.com/');  // or your hosted URL
-        await driver.get('http://localhost:3000/');  // or your hosted URL
-        await driver.wait(until.elementLocated(By.id('startButton')), 10000);  // Wait for a key element
-        let loadTime = Date.now() - start;
-        console.log(`Game page load time: ${loadTime} ms`);
-    } finally {
-        await driver.quit();
+(async function measureLoadTime() {
+    let options = new chrome.Options();
+    options.addArguments('--headless'); // Run in headless mode
+
+    let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
+
+    async function getLoadTime(url) {
+        await driver.get(url);
+        await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate `time.sleep(2)` in Python
+        const timingData = await driver.executeScript("return window.performance.timing");
+        const loadTime = (timingData.loadEventEnd - timingData.navigationStart) / 1000.0;
+        return loadTime;
     }
+
+    const gameUrls = [
+        "https://cs455-ass1.onrender.com", 
+        "https://cs455-ass1-1.onrender.com", 
+        "https://twocs455-ass1.onrender.com"
+    ];
+    const leaderboardUrl = "/high-score";
+
+    for (let url of gameUrls) {
+        const gameClientLoadTime = await getLoadTime(url);
+        const leaderboardLoadTime = await getLoadTime(url + leaderboardUrl);
+
+        console.log(`${url} Load Time: ${gameClientLoadTime} seconds`);
+        console.log(`${url} Leaderboard Page Load Time: ${leaderboardLoadTime} seconds`);
+        console.log();
+    }
+
+    await driver.quit();
 })();
