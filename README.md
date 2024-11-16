@@ -186,11 +186,11 @@ This code sets up a basic server using Express.js, a popular Node.js framework. 
 
 
 ### Part 2: Reliability and Failover Mechanisms
-  - **LoadBalancer**
-  - ***Objective:*** Evenly distribute incoming traffic across multiple primary servers.
-  - ***Implementation:*** Uses a simple round-robin approach to alternate requests between two primary servers.
+  #### LoadBalancer
+  - **Objective:** Evenly distribute incoming traffic across multiple primary servers.
+  - **Implementation:** Uses a simple round-robin approach to alternate requests between two primary servers.
 
-  - **Failover Mechanisms**
-  - ***Objective:***  Maintain service availability even if the primary servers go down.
-  - ***Implementation:*** The load balancer retries using available servers, including the backup, if necessary.
+  #### Failover Mechanisms
+  - **Objective:**  Maintain service availability even if the primary servers go down.
+  - **Implementation:** The load balancer retries using available servers, including the backup, if necessary.
 - ![LoadBalancer](https://github.com/shishir1604/cs455_ass1/blob/main/Diagrams/LoadBalancer.png)
