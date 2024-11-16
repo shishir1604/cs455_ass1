@@ -199,7 +199,7 @@ This code sets up a basic server using Express.js, a popular Node.js framework. 
 **Automate Performance testing**
   - [Here](.github/workflows/performance-tests.yml)
     
-### Part 2: Reliability and Failover Mechanisms [Here](.loadBalancer.cjs)
+### Part 2: Reliability and Failover Mechanisms [Here](loadBalancer.cjs)
   #### LoadBalancer
   - **Objective:** Evenly distribute incoming traffic across multiple primary servers.
   - **Implementation:** Uses a simple round-robin approach to alternate requests between two primary servers.
