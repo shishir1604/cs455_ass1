@@ -177,4 +177,8 @@ This code sets up a basic server using Express.js, a popular Node.js framework. 
 ### Primary Server
   - Primary Server 1: [PS1](https://cs455-ass1.onrender.com)
   - Primary Server 2: [PS2](https://cs455-ass1-1.onrender.com)
+### Backup Server
+  - Backup Server: [BS](https://twocs455-ass1.onrender.com)
+### LoadBalancer
+  - LoadBalancer Server: [LB](https://cs455-loadbalancer.onrender.com)
 
