@@ -181,9 +181,9 @@ This code sets up a basic server using Express.js, a popular Node.js framework. 
 **Server-Side Performance Testing**
   - k6 or Artillery for script-based load testing in JavaScript.
   - Setup: Simulate 10 concurrent users requesting your game page
-  - ![Server Side_Test](https://github.com/shishir1604/cs455_ass1/blob/main/Diagrams/server_side_test.png)
+  ![Server Side_Test](https://github.com/shishir1604/cs455_ass1/blob/main/Diagrams/server_side_test.png)
 **Client-Side Performance Testing**
-  - ![Client Side_Test](https://github.com/shishir1604/cs455_ass1/blob/main/Diagrams/client_side_test.png)
+  ![Client Side_Test](https://github.com/shishir1604/cs455_ass1/blob/main/Diagrams/client_side_test.png)
 
 ### Part 2: Reliability and Failover Mechanisms
   #### LoadBalancer
@@ -193,4 +193,4 @@ This code sets up a basic server using Express.js, a popular Node.js framework. 
   #### Failover Mechanisms
   - **Objective:**  Maintain service availability even if the primary servers go down.
   - **Implementation:** The load balancer retries using available servers, including the backup, if necessary.
-- ![LoadBalancer](https://github.com/shishir1604/cs455_ass1/blob/main/Diagrams/LoadBalancer.png)
+  ![LoadBalancer](https://github.com/shishir1604/cs455_ass1/blob/main/Diagrams/LoadBalancer.png)
