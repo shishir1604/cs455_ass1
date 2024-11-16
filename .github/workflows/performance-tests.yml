@@ -16,9 +16,9 @@ jobs:
         with:
           node-version: '16'
       - name: Install dependencies
-        run: npm install
+        run: npm install 
       - name: Run Selenium Load Test
-        run: client_load_test.cjs
+        run: node client_load_test.cjs
 
   server_performance:
     runs-on: ubuntu-latest
