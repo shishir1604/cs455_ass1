@@ -176,8 +176,6 @@ This code sets up a basic server using Express.js, a popular Node.js framework. 
 ## Assignment 4: Performance Testing and Reliability Enhancements
 
 ### Task Distribution
-- Worked cumulatively on testing the fetch api to post(/addscore) and get(/highscore) the data  and server retrieval when accessing root(/).
-- Collaborated to write the fetchtopScore() to fetch the data from database and display in a proper format.
 - **Ayush Yadav** -
   - Measured the load time of the game client and leaderboard page using Selenium to simulate real user interactions.
   - Added server-side performance tests to the nightly GitHub Actions workflow, ensuring automated and regular performance evaluations.
