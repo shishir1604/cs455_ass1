@@ -216,6 +216,8 @@
     "resolve.exports": "^2.0.2",
     "reusify": "^1.0.4",
     "run-parallel": "^1.2.0",
+    "selenium": "^2.20.0",
+    "selenium-webdriver": "^4.26.0",
     "semver": "^6.3.1",
     "shebang-command": "^2.0.0",
     "shebang-regex": "^3.0.0",

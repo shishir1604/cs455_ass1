@@ -18,7 +18,7 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Run Selenium Load Test
-        run: node path/to/your/selenium/client_load_test.cjs
+        run: client_load_test.cjs
 
   server_performance:
     runs-on: ubuntu-latest
@@ -28,4 +28,4 @@ jobs:
       - name: Install k6
         run: sudo apt-get install -y k6
       - name: Run Server Load Test
-        run: k6 run path/to/your/k6/server_side_test.cjs
+        run: k6 run server_side_test.cjs
