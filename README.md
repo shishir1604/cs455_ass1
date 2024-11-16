@@ -178,7 +178,7 @@ This code sets up a basic server using Express.js, a popular Node.js framework. 
 ### Task Distribution
 - **Ayush Yadav** -
   - Measured the load time of the game client and leaderboard page using Selenium to simulate real user interactions.
-  - Added server-side performance tests to the nightly GitHub Actions workflow, ensuring automated and regular performance evaluations.
+  - Added server-side performance tests to the nightly GitHub Actions workflow, ensuring automated performance evaluations.
   - Updated the README with detailed documentation along with proper visuals.
 - **Shishir** -
   - Conducted load testing for the game and leaderboard pages using k6, and Artillery with up to 10 concurrent users.
