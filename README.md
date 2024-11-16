@@ -189,15 +189,14 @@ This code sets up a basic server using Express.js, a popular Node.js framework. 
 **Backup Server** [BS](https://twocs455-ass1.onrender.com)
 **LoadBalancer Server** [LBS](https://cs455-loadbalancer.onrender.com)
 ### Part 1: Performance Testing
-**Server-Side Performance Testing**
+**Server-Side Performance Testing** [Here](server_side_test.cjs)
   - k6 or Artillery for script-based load testing in JavaScript.
   - Setup: Simulate 10 concurrent users requesting your game page
   ![Server Side_Test](https://github.com/shishir1604/cs455_ass1/blob/main/Diagrams/server_side_test.png)
-**Client-Side Performance Testing**
+**Client-Side Performance Testing** [Here](client_load_test.cjs)
   - Track performance by logging load times to analyze responsiveness using Selenium.
   ![Client Side_Test](https://github.com/shishir1604/cs455_ass1/blob/main/Diagrams/client_side_test.png)
-**Automate Performance testing**
-  - [Here](.github/workflows/performance-tests.yml)
+**Automate Performance testing** [Here](.github/workflows/performance-tests.yml)
     
 ### Part 2: Reliability and Failover Mechanisms [Here](loadBalancer.cjs)
   #### LoadBalancer
