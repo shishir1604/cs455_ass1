@@ -176,11 +176,16 @@ This code sets up a basic server using Express.js, a popular Node.js framework. 
 ## Assignment 4: Performance Testing and Reliability Enhancements
 **Primary Server** [PS1](https://cs455-ass1.onrender.com) [PS2](https://cs455-ass1-1.onrender.com)
 **Backup Server** [BS](https://twocs455-ass1.onrender.com)
-**LoadBalancer Server** [LB](https://cs455-loadbalancer.onrender.com)
+**LoadBalancer Server** [LBS](https://cs455-loadbalancer.onrender.com)
 ### Part 1: Performance Testing
 **Server-Side Performance Testing**
   - k6 or Artillery for script-based load testing in JavaScript.
   - Setup: Simulate 10 concurrent users requesting your game page
   - ![Server Side_Test](https://github.com/shishir1604/cs455_ass1/blob/main/Diagrams/server_side_test.png)
-### Client-Server Architecture ###
+**Client-Side Performance Testing**
 
+
+### Part 2: Reliability and Failover Mechanisms
+  - **Objective:** Evenly distribute incoming traffic across multiple primary servers.
+  - **Implementation:** Uses a simple round-robin approach to alternate requests between two primary servers.
+  - - ![LoadBalancer](https://github.com/shishir1604/cs455_ass1/blob/main/Diagrams/LoadBalancer.png)
