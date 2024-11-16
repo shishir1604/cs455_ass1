@@ -175,6 +175,6 @@ This code sets up a basic server using Express.js, a popular Node.js framework. 
 
 ## Assignment 4: Performance Testing and Reliability Enhancements
 ### Primary Server
-  - Primary Server 1: [PS1] (https://cs455-ass1.onrender.com)
-  - Primary Server 2: [PS2] (https://cs455-ass1-1.onrender.com)
+  - Primary Server 1: [PS1](https://cs455-ass1.onrender.com)
+  - Primary Server 2: [PS2](https://cs455-ass1-1.onrender.com)
 
