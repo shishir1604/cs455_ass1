@@ -172,3 +172,9 @@ This code sets up a basic server using Express.js, a popular Node.js framework. 
   - ![Game Logic](https://github.com/shishir1604/cs455_ass1/blob/main/Diagrams/Game%20Logic.png)
 ### Client-Server Architecture ###
   - ![Client-Server Architecture](https://github.com/shishir1604/cs455_ass1/blob/main/Diagrams/Client-Server%20Architecture.png)
+
+## Assignment 4: Performance Testing and Reliability Enhancements
+### Primary Server
+  - Primary Server 1: [PS1] (https://cs455-ass1.onrender.com)
+  - Primary Server 2: [PS2] (https://cs455-ass1-1.onrender.com)
+
