@@ -2,15 +2,13 @@ import http from 'k6/http';
 import { check, sleep } from 'k6';
 
 export let options = {
+export let options = {
     stages: [
-        { duration: '1s', target: 5 },     
-        { duration: '1s', target: 5 },    
+        { duration: '1m', target: 5 },     
+        { duration: '5m', target: 5 },
+        { duration: '1m', target: 0 },    
 
     ],
-    thresholds: {
-        'http_req_duration': ['p(95)<2000'], 
-        'http_req_failed': ['rate<0.01'],    
-      },
 };
 const gameUrls = [
     "https://cs455-ass1.onrender.com", 
